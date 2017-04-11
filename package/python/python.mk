@@ -32,7 +32,6 @@ HOST_PYTHON_CONF_OPTS += 	\
 	--disable-bsddb		\
 	--disable-test-modules	\
 	--disable-bz2		\
-	--disable-ssl		\
 	--disable-ossaudiodev	\
 	--disable-pyo-build
 
@@ -57,6 +56,10 @@ HOST_PYTHON_MAKE = $(MAKE1)
 PYTHON_DEPENDENCIES = host-python libffi
 
 HOST_PYTHON_DEPENDENCIES = host-expat host-zlib
+
+# OpenStack IPA needs SSL support in host python
+# to create wheels from pypi
+HOST_PYTHON_DEPENDENCIES += host-openssl
 
 PYTHON_INSTALL_STAGING = YES
 
